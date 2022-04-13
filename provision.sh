@@ -48,14 +48,6 @@ print_green 'Install Ruby 2.5.8'
 rvm install ruby-2.5.8
 exit_if_failed 'Installing Ruby 2.5.8 failed.'
 
-# Install travis-build.
-print_green 'Install travis-build'
-mkdir -p ~/.travis
-if [ ! -d ~/.travis/travis-build ]; then
-    git clone -q https://github.com/travis-ci/travis-build.git ~/.travis/travis-build
-    exit_if_failed 'Cloning travis-build failed.'
-fi
-
 cd ~/.travis/travis-build
 exit_if_failed 'Resetting travis-build failed.'
 yes | gem install bundler
