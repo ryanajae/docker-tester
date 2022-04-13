@@ -124,17 +124,3 @@ Other job IDs (same result):
  ~/.travis/travis-build/bin/travis compile 2675.3
  ~/.travis/travis-build/bin/travis compile 3159.2
  ```
-
-# Fifth repo: alibaba/canal
-1. `cd canal`
-2. `~/.travis/travis-build/bin/travis compile 375.3`
-Output:
-
-Other job IDs (same result):
-```
-~/.travis/travis-build/bin/travis compile 251.4
-~/.travis/travis-build/bin/travis compile 40.1
-~/.travis/travis-build/bin/travis compile 375.3
-~/.travis/travis-build/bin/travis compile 592.4
-~/.travis/travis-build/bin/travis compile 76.1
-```
