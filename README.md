@@ -10,8 +10,45 @@ Output:
 1. `cd sonarqube`
 2. `~/.travis/travis-build/bin/travis compile 39848.1`
 Output:
-`repository not known to https://api.travis-ci.org/: SonarSource/sonarqube/`
-Again, above we verified endpoint is set to .com, and the project is there: https://api.travis-ci.com/repositories/SonarSource/sonarqube/builds
+```
+undefined method `jobs' for nil:NilClass
+for a full error report, run travis report
+ryanjae@b515ef2b4984:~/docker-tester/sonarqube$ travis report
+System
+Ruby:                     Ruby 2.5.8-p224
+Operating System:         Ubuntu 20.04
+RubyGems:                 RubyGems 3.0.9
+
+CLI
+Version:                  1.11.0
+Plugins:                  "travis-build"
+Auto-Completion:          yes
+Last Version Check:       2022-04-14 13:38:56 -0700
+
+Session
+API Endpoint:             https://api.travis-ci.com/
+Logged In:                no
+Verify SSL:               yes
+Enterprise:               no
+
+Endpoints
+com:                      https://api.travis-ci.com/ (default, current)
+
+Last Exception
+An error occurred running `travis compile`:
+    NoMethodError: undefined method `jobs' for nil:NilClass
+        from /home/ryanjae/.travis/travis-build/init.rb:79:in `set_up_config'
+        from /home/ryanjae/.travis/travis-build/init.rb:28:in `run'
+        from /usr/share/rvm/gems/ruby-2.5.8/gems/travis-1.11.0/lib/travis/cli/command.rb:200:in `execute'
+        from /usr/share/rvm/gems/ruby-2.5.8/gems/travis-1.11.0/lib/travis/cli.rb:64:in `run'
+        from /usr/share/rvm/gems/ruby-2.5.8/gems/travis-1.11.0/bin/travis:18:in `<top (required)>'
+        from /home/ryanjae/.travis/travis-build/bin/travis:27:in `load'
+        from /home/ryanjae/.travis/travis-build/bin/travis:27:in `<main>'
+
+
+For issues with the command line tool, please visit https://github.com/travis-ci/travis.rb/issues.
+For Travis CI in general, go to https://github.com/travis-ci/travis-ci/issues or email support@travis-ci.com.
+```
 
 # Second repo: ikasanEIP/ikasan
 1. `cd ikasan`
@@ -120,7 +157,10 @@ Other job IDs (same result):
 ```
  ~/.travis/travis-build/bin/travis compile 1684.2
  ~/.travis/travis-build/bin/travis compile 1494.2 
- ~/.travis/travis-build/bin/travis compile 2363.1
- ~/.travis/travis-build/bin/travis compile 2675.3
  ~/.travis/travis-build/bin/travis compile 3159.2
  ```
+However, these two job IDs generate bash scripts successfully. Unclear what the differenceis:
+```
+ ~/.travis/travis-build/bin/travis compile 2363.1
+ ~/.travis/travis-build/bin/travis compile 2675.3
+```
